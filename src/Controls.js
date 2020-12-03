@@ -175,7 +175,7 @@ export default class DefaultControls extends React.Component {
     ];
     const alignItems = ['flex-start', 'center', 'flex-end'];
     return (
-      <View style={styles.row}>
+      <View style={styles.row} pointerEvents="box-none">
         {row.map((name, index) => (
           <View key={name} style={styles.spaceHolder(alignItems[index])}>
             <Cell name={name} />
@@ -188,11 +188,11 @@ export default class DefaultControls extends React.Component {
   render() {
     const Row = this._renderRow;
     return (
-      <React.Fragment>
+      <View style={styles.container} pointerEvents="box-none">
         <Row rowAlign="top" contentAlign="flex-start" />
         <Row contentAlign="center" />
         <Row rowAlign="bottom" contentAlign="flex-end" />
-      </React.Fragment>
+      </View>
     );
   }
 }
@@ -253,6 +253,10 @@ DefaultControls.defaultProps = {
 };
 
 const styles = {
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
   row: {
     flexDirection: 'row',
     height: 0,
